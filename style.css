@@ -1,0 +1,44 @@
+:root{
+  --bg:#dbe9ff; --body:#1e4fd8; --display:#0f2f8f; --display-text:#ffffff; --sub:#a9c4ff;
+  --key:#ffffff; --key-text:#0f2f8f; --fn:#bcd3ff; --op:#0b1f66; --op-text:#ffffff;
+  --eq:#38bdf8; --eq-text:#04204a; --focus:#facc15;
+}
+@media (prefers-color-scheme: dark){
+  :root{
+    --bg:#08122e; --body:#14369c; --display:#0a1d5c; --sub:#8fb0f5;
+    --key:#e8f0ff; --fn:#9fbcf5; --op:#06123d;
+  }
+}
+*,*::before,*::after{box-sizing:border-box}
+body{
+  margin:0; min-height:100vh; display:grid; place-items:center; padding:16px;
+  background:var(--bg);
+  font-family:"Segoe UI",system-ui,-apple-system,Roboto,sans-serif;
+}
+.calc{
+  width:100%; max-width:360px; padding:20px; border-radius:28px;
+  background:var(--body); box-shadow:0 20px 40px rgba(15,47,143,.35);
+}
+.screen{
+  background:var(--display); color:var(--display-text);
+  border-radius:18px; padding:16px 18px; margin-bottom:18px; min-height:112px;
+  display:flex; flex-direction:column; justify-content:flex-end;
+  text-align:right; overflow:hidden;
+}
+.expr{color:var(--sub); font-size:1rem; min-height:1.4em; word-break:break-all}
+.result{font-size:2.6rem; font-weight:600; line-height:1.15; word-break:break-all; font-variant-numeric:tabular-nums}
+.keys{display:grid; grid-template-columns:repeat(4,1fr); gap:12px}
+button{
+  font:inherit; font-size:1.35rem; font-weight:600;
+  height:62px; border:0; border-radius:16px; cursor:pointer;
+  background:var(--key); color:var(--key-text);
+  transition:transform .08s, filter .15s;
+}
+button:hover{filter:brightness(.95)}
+button:active{transform:scale(.95)}
+button:focus-visible{outline:3px solid var(--focus); outline-offset:2px}
+button.fn{background:var(--fn)}
+button.op{background:var(--op); color:var(--op-text)}
+button.eq{background:var(--eq); color:var(--eq-text)}
+button.zero{grid-column:span 2}
+@media (prefers-reduced-motion:reduce){button{transition:none}}
